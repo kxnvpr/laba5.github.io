@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Масив з випадковими числами</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fdf6f8;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      background-color: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+    }
+
+    h1 {
+      color: #d88ab8;
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    .array-display {
+      font-size: 18px;
+      margin: 15px 0;
+      padding: 12px;
+      background-color: #fff0f5;
+      border-radius: 8px;
+      font-family: monospace;
+      word-spacing: 10px;
+      color: #5a5a5a;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 16px;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: linear-gradient(135deg, #ff9ec7, #ff6fb5);
+      box-shadow: 0 4px 8px rgba(255, 111, 181, 0.3);
+    }
+
+    button:hover {
+      background: linear-gradient(135deg, #ff6fb5, #ff4da6);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(255, 111, 181, 0.4);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Масив з випадковими числами</h1>
+    <p><strong>Початковий масив:</strong></p>
+    <div id="initialArray" class="array-display">—</div>
+
+    <p><strong>Після заміни від’ємних на 0:</strong></p>
+    <div id="resultArray" class="array-display">—</div>
+
+    <button onclick="generateAndProcess()">Згенерувати новий масив</button>
+  </div>
+
+  <script>
+    function generateAndProcess() {
+      let array = [];
+      for (let i = 0; i < 10; i++) {
+        array[i] = Math.floor(Math.random() * 100) - 50;
+      }
+
+      document.getElementById("initialArray").textContent = array.join(", ");
+      let processedArray = array.map(x => x < 0 ? 0 : x);
+      document.getElementById("resultArray").textContent = processedArray.join(", ");
+    }
+
+    window.onload = generateAndProcess;
+  </script>
+</body>
+</html>
